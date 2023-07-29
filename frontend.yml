@@ -18,9 +18,20 @@
               path: /usr/share/nginx/html/*
               state: absent
 
+          - name: creating a app directory
+            ansible.builtin.file:
+              path: /user/share/nginx/html/*
+              state: directory
 
-          - name: start frontend service
+          - name: download and extract app content
+            ansible.builtin.unarchive:
+              src: https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
+              dest: /usr/share/nginx/html/*
+              remote: yes
+
+          - name: restart nginx
             ansible.builtin.systemd:
-              name: httpd
-              state: started
+              name: nginx
+              state: restarted
+              enabled: yes
 
