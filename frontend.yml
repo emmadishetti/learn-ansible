@@ -21,6 +21,6 @@
 
           - name: start frontend service
             ansible.builtin.systemd:
-              name: nginx
+              name: httpd
               state: started
 
