@@ -1,0 +1,27 @@
+    - name: Roboshop-project Frontend setup
+      hosts: all
+      become: true
+      tasks:
+
+    - name: install nginx
+      ansible.builtin.yum:
+        name: nginx
+        state: latest
+
+    - name: copy nginx roboshop file
+      ansible.builtin.copy:
+        src: nginx-roboshop.conf
+        dest: /etc/nginx/default.d/roboshop.conf
+
+    - name: removing the existing content from file
+      ansible.builtin.file:
+          path: /usr/share/nginx/html/*
+          state: absent
+
+
+    - name: start frontend service
+      ansible.builtin.systemd:
+           state: restarted
+           name: nginx
+           enable: true
+
