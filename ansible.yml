@@ -2,13 +2,13 @@
   hosts: all
   become: true
   tasks:
-    - name: Installl nginx
+    - name: Installl Nginx
       ansible.builtin.yum:
         name: httpd
         state: latest
 
     - name: Start Nginx
       ansible.builtin.systemd:
-        name: nginx
+        name: Nginx
         state: started
         enabled: yes
