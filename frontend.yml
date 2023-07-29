@@ -22,6 +22,6 @@
           - name: start frontend service
             ansible.builtin.systemd:
               state: restarted
-              name: nginx
+              name: httpd
               enable: true
 
