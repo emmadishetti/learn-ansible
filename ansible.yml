@@ -9,6 +9,6 @@
 
     - name: Start Nginx
       ansible.builtin.systemd:
-        name: Nginx
+        name: httpd
         state: started
         enabled: yes
